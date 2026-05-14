@@ -3,7 +3,8 @@
 // Landing CV espacial - Benjamín Becerra
 // Importa Tailwind en tu layout o directamente aquí:
 import "../styles/global.css";
-
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 const technologies = [
   { name: "Python", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
   { name: "Django", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
@@ -275,9 +276,7 @@ const technologies = [
       </section>
     </main>
 
-    <script type="module">
-      import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
+    <script define:vars={{ supabaseUrl, supabaseAnonKey }}>
       const revealElements = document.querySelectorAll('.reveal');
 
       const observer = new IntersectionObserver((entries) => {
@@ -291,11 +290,13 @@ const technologies = [
       revealElements.forEach((el) => observer.observe(el));
 
       const STORAGE_KEY = 'bb_portfolio_comments';
-      const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-      const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-      const supabase = supabaseUrl && supabaseAnonKey
-        ? createClient(supabaseUrl, supabaseAnonKey)
-        : null;
+      const supabaseEnabled = Boolean(supabaseUrl && supabaseAnonKey);
+
+      const supabaseHeaders = {
+        apikey: supabaseAnonKey,
+        Authorization: `Bearer ${supabaseAnonKey}`,
+        'Content-Type': 'application/json',
+      };
 
       const escapeHTML = (value) => String(value ?? '')
         .replaceAll('&', '&amp;')
@@ -314,17 +315,19 @@ const technologies = [
       };
 
       const getComments = async () => {
-        if (!supabase) return getLocalComments();
+        if (!supabaseEnabled) return getLocalComments();
 
-        const { data, error } = await supabase
-          .from('comments')
-          .select('id,name,text,rating,created_at')
-          .order('created_at', { ascending: false });
+        const response = await fetch(
+          `${supabaseUrl}/rest/v1/comments?select=id,name,text,rating,created_at&order=created_at.desc`,
+          { headers: supabaseHeaders }
+        );
 
-        if (error) {
-          console.error(error);
+        if (!response.ok) {
+          console.error(await response.text());
           return getLocalComments();
         }
+
+        const data = await response.json();
 
         return (data ?? []).map((comment) => ({
           id: comment.id,
@@ -451,15 +454,18 @@ const technologies = [
             const ok = confirm('¿Seguro que quieres eliminar este comentario?');
             if (!ok) return;
 
-            if (supabase && button.dataset.id) {
-              const { error } = await supabase
-                .from('comments')
-                .delete()
-                .eq('id', button.dataset.id);
+            if (supabaseEnabled && button.dataset.id) {
+              const response = await fetch(
+                `${supabaseUrl}/rest/v1/comments?id=eq.${button.dataset.id}`,
+                {
+                  method: 'DELETE',
+                  headers: supabaseHeaders,
+                }
+              );
 
-              if (error) {
+              if (!response.ok) {
                 alert('No se pudo eliminar el comentario.');
-                console.error(error);
+                console.error(await response.text());
                 return;
               }
             } else {
@@ -475,7 +481,7 @@ const technologies = [
       };
 
       renderRatingPicker();
-      await renderComments();
+      renderComments();
 
       document.getElementById('commentForm')?.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -495,12 +501,16 @@ const technologies = [
           rating: Number(ratingInput.value),
         };
 
-        if (supabase) {
-          const { error } = await supabase.from('comments').insert(comment);
+        if (supabaseEnabled) {
+          const response = await fetch(`${supabaseUrl}/rest/v1/comments`, {
+            method: 'POST',
+            headers: supabaseHeaders,
+            body: JSON.stringify(comment),
+          });
 
-          if (error) {
+          if (!response.ok) {
             alert('No se pudo publicar el comentario.');
-            console.error(error);
+            console.error(await response.text());
             return;
           }
         } else {
@@ -520,7 +530,7 @@ const technologies = [
       });
 
       document.getElementById('clearComments')?.addEventListener('click', async () => {
-        if (supabase) {
+        if (supabaseEnabled) {
           alert('Para borrar comentarios publicados en Supabase, elimínalos desde la tabla comments o usa el botón Eliminar de cada comentario.');
           return;
         }
