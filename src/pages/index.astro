@@ -1,0 +1,908 @@
+---
+// src/pages/index.astro
+// Landing CV espacial - Benjamín Becerra
+// Importa Tailwind en tu layout o directamente aquí:
+import "../styles/global.css";
+
+const technologies = [
+  { name: "Python", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "Django", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
+  { name: "PostgreSQL", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "SQL Server", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
+  { name: "C#", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
+  { name: "JavaScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "Astro", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg" },
+  { name: "Tailwind", img: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
+  { name: "Git", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+  { name: "Docker", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+];
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benjamín Becerra | Desarrollador Backend</title>
+    <meta name="description" content="Portfolio profesional de Benjamín Becerra, desarrollador backend especializado en sistemas empresariales, APIs, SQL Server, Django y automatización." />
+  </head>
+
+  <body class="bg-[#030712] text-white overflow-x-hidden selection:bg-violet-500 selection:text-white">
+    <div class="fixed inset-0 -z-20 bg-[radial-gradient(circle_at_top_left,#172554_0%,transparent_30%),radial-gradient(circle_at_top_right,#581c87_0%,transparent_28%),linear-gradient(180deg,#020617_0%,#030712_45%,#020617_100%)]"></div>
+    <div class="stars fixed inset-0 -z-10 opacity-70"></div>
+
+    <header class="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-slate-950/55 backdrop-blur-xl">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href="#inicio" class="text-2xl font-black tracking-tight">
+          BB<span class="text-violet-400">/</span>
+        </a>
+
+        <div class="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">
+          <a href="#inicio" class="nav-link">Inicio</a>
+          <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+          <a href="#experiencia" class="nav-link">Experiencia</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#proyectos" class="nav-link">Proyectos</a>
+          <a href="#comentarios" class="nav-link">Comentarios</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
+
+        <a href="#contacto" class="rounded-xl border border-violet-400/50 px-4 py-2 text-sm font-semibold text-white transition hover:bg-violet-500/20 hover:shadow-[0_0_25px_rgba(139,92,246,.45)]">
+          Contactarme
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="relative min-h-screen overflow-hidden px-6 pt-32 md:px-16 lg:px-24">
+        <div class="absolute left-[-80px] top-32 h-44 w-44 rounded-full bg-blue-950 shadow-[inset_-25px_-25px_50px_rgba(0,0,0,.7),0_0_80px_rgba(59,130,246,.25)]"></div>
+        <div class="absolute right-12 top-28 h-20 w-20 rounded-full bg-orange-900 shadow-[inset_-18px_-18px_25px_rgba(0,0,0,.7),0_0_55px_rgba(249,115,22,.25)]"></div>
+
+        <div class="mx-auto grid min-h-[calc(100vh-8rem)] max-w-7xl items-center gap-14 lg:grid-cols-[1fr_.9fr]">
+          <div class="reveal">
+            <p class="mb-5 text-sm font-bold uppercase tracking-[0.45em] text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-violet-400">
+              Desarrollador Backend
+            </p>
+
+            <h1 class="max-w-3xl text-5xl font-black leading-[0.95] tracking-tight md:text-7xl">
+              Benjamín <br />
+              <span class="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-500 bg-clip-text text-transparent">Becerra</span>
+            </h1>
+
+            <p class="mt-7 max-w-xl text-lg leading-8 text-slate-300">
+              Desarrollo soluciones web y sistemas empresariales con enfoque en backend, bases de datos, automatización de procesos, APIs y plataformas modernas.
+            </p>
+
+            <div class="mt-9 flex flex-wrap gap-4">
+              <a href="#proyectos" class="group rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 px-6 py-3 font-bold text-white shadow-[0_0_30px_rgba(59,130,246,.35)] transition hover:scale-105">
+                Ver proyectos <span class="ml-2 inline-block transition group-hover:translate-x-1">→</span>
+              </a>
+              <a href="mailto:i.benjaminbd@gmail.com" class="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-bold text-white backdrop-blur transition hover:border-cyan-300 hover:text-cyan-300">
+                Contactarme
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal relative flex items-center justify-center">
+            <div class="orbit absolute h-[390px] w-[390px] rounded-full border border-violet-400/30"></div>
+            <div class="orbit orbit-delay absolute h-[500px] w-[500px] rounded-full border border-cyan-400/20"></div>
+
+            <div class="relative rounded-full bg-gradient-to-r from-cyan-300 via-white to-violet-500 p-2 shadow-[0_0_70px_rgba(139,92,246,.55)]">
+              <!-- Coloca tu imagen en: public/img/benjamin.jpg -->
+              <img src="/img/benjamin.jpg" alt="Foto de Benjamín Becerra" class="h-72 w-72 rounded-full object-cover md:h-96 md:w-96" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre-mi" class="section-space border-t border-white/10">
+        <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_.9fr] lg:items-center">
+          <div class="reveal">
+            <p class="section-kicker">Sobre mí</p>
+            <h2 class="section-title">Construyo soluciones reales para sistemas reales</h2>
+            <p class="mt-6 text-lg leading-8 text-slate-300">
+              Soy desarrollador enfocado en backend, bases de datos y sistemas empresariales. Me especializo en crear funcionalidades robustas, reportes, integración de APIs, automatización de procesos y mejoras para plataformas internas.
+            </p>
+
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+              <div class="stat-card"><strong>2+</strong><span>Años de experiencia</span></div>
+              <div class="stat-card"><strong>10+</strong><span>Proyectos trabajados</span></div>
+              <div class="stat-card"><strong>8+</strong><span>Tecnologías dominadas</span></div>
+            </div>
+          </div>
+
+          <div class="reveal rounded-3xl border border-violet-400/35 bg-slate-900/60 p-8 shadow-[0_0_60px_rgba(88,28,135,.28)] backdrop-blur">
+            <p class="mb-6 text-4xl text-violet-400">&lt;/&gt;</p>
+			<pre class="overflow-x-auto text-sm leading-8 text-slate-300"><code><span class="text-violet-300">const</span> benjamin = {'{'}
+			name: <span class="text-cyan-300">"Benjamín Becerra"</span>,
+			role: <span class="text-cyan-300">"Backend Developer"</span>,
+			focus: [<span class="text-cyan-300">"APIs"</span>, <span class="text-cyan-300">"Databases"</span>, <span class="text-cyan-300">"Automation"</span>],
+			passion: <span class="text-cyan-300">"Building scalable solutions 🚀"</span>
+			{'}'};</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencia" class="section-space">
+        <div class="mx-auto max-w-7xl">
+          <div class="reveal">
+            <p class="section-kicker">Experiencia</p>
+            <h2 class="section-title">Trayectoria profesional</h2>
+          </div>
+
+          <div class="mt-12 grid gap-8 lg:grid-cols-2">
+            <article class="experience-card reveal">
+              <div class="logo-box">Security</div>
+              <div>
+                <h3>Banco Security</h3>
+                <p class="text-cyan-300">Área Factoring · Desarrollo de sistemas internos</p>
+                <p class="mt-3 text-slate-300">Desarrollo y mantención de módulos empresariales, procedimientos almacenados, reportes, validaciones y mejoras funcionales.</p>
+              </div>
+            </article>
+
+            <article class="experience-card reveal">
+              <div class="logo-box">OpenAI</div>
+              <div>
+                <h3>Universidad Gabriela Mistral</h3>
+                <p class="text-cyan-300">Proyecto con inteligencia artificial</p>
+                <p class="mt-3 text-slate-300">Desarrollo de software con IA usando OpenAI, orientado a apoyar procesos para estudiantes de Psicología.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section-space overflow-hidden border-y border-white/10">
+        <div class="mx-auto max-w-7xl">
+          <div class="reveal">
+            <p class="section-kicker">Tecnologías</p>
+            <h2 class="section-title">Lenguajes, frameworks y herramientas</h2>
+          </div>
+
+          <div class="relative mt-12">
+            <div class="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#030712] to-transparent"></div>
+            <div class="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#030712] to-transparent"></div>
+
+            <div class="carousel-track flex gap-5">
+              {[...technologies, ...technologies].map((tech) => (
+                <div class="tech-card min-w-40">
+                  <img src={tech.img} alt={tech.name} class="mx-auto h-16 w-16 object-contain" />
+                  <p class="mt-4 text-center font-semibold text-white">{tech.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" class="section-space">
+        <div class="mx-auto max-w-7xl">
+          <div class="reveal">
+            <p class="section-kicker">Proyectos</p>
+            <h2 class="section-title">Proyectos destacados</h2>
+          </div>
+
+          <div class="mt-12 grid gap-6 md:grid-cols-3">
+            <article class="project-card reveal">
+              <span>IA</span>
+              <h3>Asistente IA con OpenAI</h3>
+              <p>Plataforma que integra OpenAI para automatizar respuestas y generar contenido inteligente.</p>
+            </article>
+
+            <article class="project-card reveal">
+              <span>WEB</span>
+              <h3>Sistema de Factoring</h3>
+              <p>Módulos internos con SQL Server, procedimientos almacenados, reportes y validaciones.</p>
+            </article>
+
+            <article class="project-card reveal">
+              <span>API</span>
+              <h3>WizzLife Backend</h3>
+              <p>Backend con Django, PostgreSQL, autenticación, CRUD y despliegue en Render.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="comentarios" class="section-space border-y border-white/10">
+        <div class="mx-auto max-w-7xl">
+          <div class="reveal">
+            <p class="section-kicker">Comentarios</p>
+            <h2 class="section-title">Califica esta página</h2>
+            <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+              Deja tu nombre, una calificación y un comentario. Las estrellas generales se calculan automáticamente con el promedio de todas las calificaciones.
+            </p>
+          </div>
+
+          <div class="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="reveal rounded-3xl border border-yellow-300/20 bg-slate-900/70 p-6 shadow-[0_0_55px_rgba(250,204,21,.12)] backdrop-blur">
+              <div class="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 p-6 text-center">
+                <p class="text-sm font-bold uppercase tracking-[0.25em] text-yellow-200">Promedio general</p>
+                <div id="averageNumber" class="mt-4 text-6xl font-black text-yellow-300 drop-shadow-[0_0_16px_rgba(250,204,21,.75)]">0.0</div>
+                <div id="averageStars" class="mt-3 flex justify-center gap-1 text-3xl" aria-label="Promedio de estrellas"></div>
+                <p id="ratingCount" class="mt-3 text-slate-300">Aún no hay calificaciones</p>
+              </div>
+
+              <form id="commentForm" class="mt-6 space-y-5">
+                <div>
+                  <label for="commentName" class="mb-2 block text-sm font-semibold text-slate-200">Nombre</label>
+                  <input id="commentName" type="text" maxlength="40" placeholder="Ej: Benjamín" required class="comment-input" />
+                </div>
+
+                <div>
+                  <label for="commentText" class="mb-2 block text-sm font-semibold text-slate-200">Comentario</label>
+                  <textarea id="commentText" maxlength="220" placeholder="Escribe tu comentario..." required class="comment-input min-h-32 resize-none"></textarea>
+                </div>
+
+                <div>
+                  <p class="mb-2 block text-sm font-semibold text-slate-200">Tu calificación</p>
+                  <div id="ratingPicker" class="flex gap-2 text-4xl" aria-label="Seleccionar calificación"></div>
+                  <input id="selectedRating" type="hidden" value="0" />
+                  <p id="ratingLabel" class="mt-2 text-sm font-semibold text-yellow-200">Selecciona entre 0.5 y 5 estrellas</p>
+                </div>
+
+                <button type="submit" class="w-full rounded-xl bg-gradient-to-r from-yellow-300 via-orange-400 to-violet-500 px-6 py-4 font-black text-slate-950 shadow-[0_0_35px_rgba(250,204,21,.35)] transition hover:scale-[1.02]">
+                  Publicar comentario
+                </button>
+              </form>
+            </div>
+
+            <div class="reveal">
+              <div class="mb-5 flex items-center justify-between gap-4">
+                <h3 class="text-2xl font-black">Opiniones publicadas</h3>
+                <button id="clearComments" type="button" class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-red-400/50 hover:text-red-300">
+                  Eliminar todo
+                </button>
+              </div>
+              <div id="commentsList" class="space-y-4"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="px-6 pb-20 md:px-16 lg:px-24">
+        <div class="reveal mx-auto max-w-7xl rounded-3xl border border-violet-400/30 bg-gradient-to-r from-slate-900/90 to-violet-950/40 p-8 shadow-[0_0_70px_rgba(88,28,135,.25)] md:p-12">
+          <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 class="text-3xl font-black md:text-4xl">¿Tienes un proyecto en mente?</h2>
+              <p class="mt-3 text-slate-300">Hablemos y hagamos algo increíble juntos.</p>
+            </div>
+            <a href="mailto:i.benjaminbd@gmail.com" class="rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 px-7 py-4 text-center font-bold text-white transition hover:scale-105">
+              Contactarme
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import { createClient } from '@supabase/supabase-js';
+
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      revealElements.forEach((el) => observer.observe(el));
+
+      const STORAGE_KEY = 'bb_portfolio_comments';
+      const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+      const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+      const supabase = supabaseUrl && supabaseAnonKey
+        ? createClient(supabaseUrl, supabaseAnonKey)
+        : null;
+
+      const escapeHTML = (value) => String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+
+      const getLocalComments = () => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : [];
+      };
+
+      const saveLocalComments = (comments) => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+      };
+
+      const getComments = async () => {
+        if (!supabase) return getLocalComments();
+
+        const { data, error } = await supabase
+          .from('comments')
+          .select('id,name,text,rating,created_at')
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error(error);
+          return getLocalComments();
+        }
+
+        return (data ?? []).map((comment) => ({
+          id: comment.id,
+          name: comment.name,
+          text: comment.text,
+          rating: comment.rating,
+          date: new Date(comment.created_at).toLocaleDateString('es-CL'),
+        }));
+      };
+
+      const createStars = (rating) => {
+        let html = '';
+        for (let i = 1; i <= 5; i++) {
+          if (rating >= i) {
+            html += '<span class="star-full">★</span>';
+          } else if (rating >= i - 0.5) {
+            html += '<span class="star-half">★</span>';
+          } else {
+            html += '<span class="star-empty">★</span>';
+          }
+        }
+        return html;
+      };
+
+      const renderRatingPicker = () => {
+        const ratingPicker = document.getElementById('ratingPicker');
+        const selectedRating = document.getElementById('selectedRating');
+        const ratingLabel = document.getElementById('ratingLabel');
+        if (!ratingPicker || !selectedRating) return;
+
+        ratingPicker.innerHTML = '';
+        selectedRating.value = '0';
+        if (ratingLabel) ratingLabel.textContent = 'Selecciona entre 0.5 y 5 estrellas';
+
+        for (let i = 1; i <= 5; i++) {
+          const star = document.createElement('span');
+          star.className = 'rating-star-picker';
+          star.dataset.star = i.toString();
+          star.innerHTML = `
+            <button type="button" class="rating-half rating-left" data-value="${i - 0.5}" aria-label="${i - 0.5} estrellas"></button>
+            <button type="button" class="rating-half rating-right" data-value="${i}" aria-label="${i} estrellas"></button>
+            <span class="rating-star-bg">★</span>
+            <span class="rating-star-fill">★</span>
+          `;
+          ratingPicker.appendChild(star);
+        }
+
+        ratingPicker.querySelectorAll('.rating-half').forEach((button) => {
+          button.addEventListener('click', () => {
+            const value = Number(button.dataset.value);
+            selectedRating.value = value.toString();
+            if (ratingLabel) ratingLabel.textContent = `Tu calificación: ${value.toFixed(1)} estrellas`;
+            paintPicker(value);
+          });
+        });
+      };
+
+      const paintPicker = (rating) => {
+        document.querySelectorAll('.rating-star-picker').forEach((star) => {
+          const starNumber = Number(star.dataset.star);
+          const fill = star.querySelector('.rating-star-fill');
+          if (!fill) return;
+
+          if (rating >= starNumber) {
+            fill.style.width = '100%';
+          } else if (rating >= starNumber - 0.5) {
+            fill.style.width = '50%';
+          } else {
+            fill.style.width = '0%';
+          }
+        });
+      };
+
+      const renderComments = async () => {
+        const comments = await getComments();
+        const commentsList = document.getElementById('commentsList');
+        const averageNumber = document.getElementById('averageNumber');
+        const averageStars = document.getElementById('averageStars');
+        const ratingCount = document.getElementById('ratingCount');
+
+        if (!commentsList || !averageNumber || !averageStars || !ratingCount) return;
+
+        const total = comments.reduce((sum, item) => sum + Number(item.rating), 0);
+        const average = comments.length ? total / comments.length : 0;
+
+        averageNumber.textContent = average.toFixed(1);
+        averageStars.innerHTML = createStars(average);
+        ratingCount.textContent = comments.length === 0
+          ? 'Aún no hay calificaciones'
+          : comments.length === 1
+            ? '1 persona calificó la página'
+            : `${comments.length} personas calificaron la página`;
+
+        commentsList.innerHTML = comments.length === 0
+          ? `<div class="empty-comments">
+              <p>Aún no hay comentarios publicados.</p>
+              <span>Sé la primera persona en calificar esta página ✨</span>
+            </div>`
+          : comments.map((comment, index) => `
+              <article class="comment-card">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h4>${escapeHTML(comment.name)}</h4>
+                    <p class="text-sm text-slate-400">${escapeHTML(comment.date)}</p>
+                  </div>
+
+                  <div class="flex flex-wrap items-center gap-4">
+                    <div class="flex gap-1 text-2xl">${createStars(Number(comment.rating))}</div>
+                    <span class="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-3 py-1 text-sm font-black text-yellow-200">
+                      ${Number(comment.rating).toFixed(1)} / 5
+                    </span>
+                    <button type="button" class="delete-comment" data-id="${escapeHTML(comment.id ?? '')}" data-index="${index}">
+                      Eliminar
+                    </button>
+                  </div>
+                </div>
+
+                <p class="mt-4 leading-7 text-slate-300">${escapeHTML(comment.text)}</p>
+              </article>
+            `).join('');
+
+        document.querySelectorAll('.delete-comment').forEach((button) => {
+          button.addEventListener('click', async () => {
+            const ok = confirm('¿Seguro que quieres eliminar este comentario?');
+            if (!ok) return;
+
+            if (supabase && button.dataset.id) {
+              const { error } = await supabase
+                .from('comments')
+                .delete()
+                .eq('id', button.dataset.id);
+
+              if (error) {
+                alert('No se pudo eliminar el comentario.');
+                console.error(error);
+                return;
+              }
+            } else {
+              const index = Number(button.dataset.index);
+              const localComments = getLocalComments();
+              localComments.splice(index, 1);
+              saveLocalComments(localComments);
+            }
+
+            await renderComments();
+          });
+        });
+      };
+
+      renderRatingPicker();
+      await renderComments();
+
+      document.getElementById('commentForm')?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const nameInput = document.getElementById('commentName');
+        const textInput = document.getElementById('commentText');
+        const ratingInput = document.getElementById('selectedRating');
+
+        if (Number(ratingInput.value) === 0) {
+          alert('Debes seleccionar una calificación antes de publicar.');
+          return;
+        }
+
+        const comment = {
+          name: nameInput.value.trim(),
+          text: textInput.value.trim(),
+          rating: Number(ratingInput.value),
+        };
+
+        if (supabase) {
+          const { error } = await supabase.from('comments').insert(comment);
+
+          if (error) {
+            alert('No se pudo publicar el comentario.');
+            console.error(error);
+            return;
+          }
+        } else {
+          const comments = getLocalComments();
+          comments.unshift({
+            ...comment,
+            date: new Date().toLocaleDateString('es-CL'),
+          });
+          saveLocalComments(comments);
+        }
+
+        event.target.reset();
+        ratingInput.value = '0';
+        renderRatingPicker();
+        paintPicker(0);
+        await renderComments();
+      });
+
+      document.getElementById('clearComments')?.addEventListener('click', async () => {
+        if (supabase) {
+          alert('Para borrar comentarios publicados en Supabase, elimínalos desde la tabla comments o usa el botón Eliminar de cada comentario.');
+          return;
+        }
+
+        localStorage.removeItem(STORAGE_KEY);
+        await renderComments();
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .stars {
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1px),
+      radial-gradient(circle, rgba(125,211,252,.7) 1px, transparent 1px),
+      radial-gradient(circle, rgba(168,85,247,.6) 1px, transparent 1px);
+    background-size: 90px 90px, 140px 140px, 220px 220px;
+    animation: starsMove 45s linear infinite;
+  }
+
+  @keyframes starsMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-220px); }
+  }
+
+  .nav-link {
+    position: relative;
+    transition: color .25s ease;
+  }
+
+  .nav-link:hover {
+    color: #67e8f9;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+    transition: width .25s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .orbit {
+    transform: rotate(-15deg);
+    animation: orbitSpin 16s linear infinite;
+  }
+
+  .orbit-delay {
+    animation-duration: 24s;
+    animation-direction: reverse;
+  }
+
+  @keyframes orbitSpin {
+    from { transform: rotate(-15deg); }
+    to { transform: rotate(345deg); }
+  }
+
+  .section-space {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-space {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-space {
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+
+  .section-kicker {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: .85rem;
+    font-weight: 800;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: #67e8f9;
+  }
+
+  .section-title {
+    max-width: 780px;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .stat-card {
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 1rem;
+    background: rgba(15,23,42,.65);
+    padding: 1.25rem;
+    backdrop-filter: blur(14px);
+  }
+
+  .stat-card strong {
+    display: block;
+    margin-bottom: .5rem;
+    background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  .stat-card span {
+    color: #cbd5e1;
+    font-size: .95rem;
+  }
+
+  .experience-card,
+  .project-card,
+  .tech-card {
+    border: 1px solid rgba(255,255,255,.11);
+    background: linear-gradient(135deg, rgba(15,23,42,.9), rgba(30,41,59,.55));
+    box-shadow: 0 20px 80px rgba(2,6,23,.45);
+    backdrop-filter: blur(16px);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+
+  .experience-card:hover,
+  .project-card:hover,
+  .tech-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(103,232,249,.45);
+    box-shadow: 0 0 45px rgba(139,92,246,.22);
+  }
+
+  .experience-card {
+    display: flex;
+    gap: 1.25rem;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .experience-card h3,
+  .project-card h3 {
+    font-size: 1.25rem;
+    font-weight: 900;
+  }
+
+  .logo-box {
+    display: grid;
+    min-width: 88px;
+    height: 88px;
+    place-items: center;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(37,99,235,.55), rgba(124,58,237,.55));
+    color: white;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .tech-card {
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+  }
+
+  .carousel-track {
+    width: max-content;
+    animation: carousel 28s linear infinite;
+  }
+
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes carousel {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .project-card {
+    min-height: 240px;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: "";
+    position: absolute;
+    inset: auto -30% -40% auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(139,92,246,.55), transparent 65%);
+  }
+
+  .project-card span {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    border-radius: .7rem;
+    background: linear-gradient(90deg, #2563eb, #9333ea);
+    padding: .35rem .7rem;
+    font-size: .75rem;
+    font-weight: 900;
+  }
+
+  .project-card p {
+    margin-top: 1rem;
+    color: #cbd5e1;
+    line-height: 1.7;
+  }
+
+
+  .comment-input {
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(2,6,23,.55);
+    padding: 1rem;
+    color: white;
+    outline: none;
+    transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+
+  .comment-input::placeholder {
+    color: #64748b;
+  }
+
+  .comment-input:focus {
+    border-color: rgba(250,204,21,.65);
+    background: rgba(15,23,42,.75);
+    box-shadow: 0 0 30px rgba(250,204,21,.18);
+  }
+
+  .rating-star-picker {
+    position: relative;
+    display: inline-block;
+    width: 2.3rem;
+    height: 2.6rem;
+    font-size: 2.3rem;
+    line-height: 1;
+  }
+
+  .rating-star-bg,
+  .rating-star-fill {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .rating-star-bg {
+    color: rgba(148,163,184,.35);
+  }
+
+  .rating-star-fill {
+    width: 0%;
+    overflow: hidden;
+    color: #facc15;
+    text-shadow: 0 0 14px rgba(250,204,21,.9), 0 0 28px rgba(250,204,21,.35);
+    transition: width .18s ease;
+    white-space: nowrap;
+  }
+
+  .rating-star-picker:hover {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 14px rgba(250,204,21,.75));
+  }
+
+  .rating-half {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+    width: 50%;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  .rating-left {
+    left: 0;
+  }
+
+  .rating-right {
+    right: 0;
+  }
+
+  .star-full {
+    color: #facc15;
+    text-shadow: 0 0 12px rgba(250,204,21,.85), 0 0 24px rgba(250,204,21,.35);
+  }
+
+  .star-empty {
+    color: rgba(148,163,184,.35);
+  }
+
+  .star-half {
+    color: transparent;
+    background: linear-gradient(90deg, #facc15 50%, rgba(148,163,184,.35) 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 12px rgba(250,204,21,.5);
+  }
+
+  .comment-card {
+    border: 1px solid rgba(250,204,21,.16);
+    border-radius: 1.5rem;
+    background: linear-gradient(135deg, rgba(15,23,42,.85), rgba(30,41,59,.55));
+    padding: 1.5rem;
+    box-shadow: 0 20px 70px rgba(2,6,23,.35);
+    backdrop-filter: blur(16px);
+  }
+
+  .comment-card h4 {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: white;
+  }
+
+
+  .delete-comment {
+    border: 1px solid rgba(248,113,113,.35);
+    border-radius: .8rem;
+    padding: .45rem .8rem;
+    color: #fca5a5;
+    font-size: .8rem;
+    font-weight: 800;
+    transition: all .2s ease;
+  }
+
+  .delete-comment:hover {
+    background: rgba(239,68,68,.15);
+    box-shadow: 0 0 20px rgba(239,68,68,.25);
+  }
+
+  .empty-comments {
+    border: 1px dashed rgba(250,204,21,.25);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    text-align: center;
+    color: #cbd5e1;
+    background: rgba(15,23,42,.45);
+  }
+
+  .empty-comments p {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: white;
+  }
+
+  .empty-comments span {
+    display: block;
+    margin-top: .5rem;
+    color: #facc15;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .75s ease, transform .75s ease;
+  }
+
+  .reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
