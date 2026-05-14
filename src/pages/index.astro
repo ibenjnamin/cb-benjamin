@@ -509,8 +509,9 @@ const technologies = [
           });
 
           if (!response.ok) {
-            alert('No se pudo publicar el comentario.');
-            console.error(await response.text());
+            const errorText = await response.text();
+            alert('Error Supabase: ' + errorText);
+            console.error(errorText);
             return;
           }
         } else {
