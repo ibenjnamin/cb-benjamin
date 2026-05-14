@@ -251,9 +251,6 @@ const technologies = [
             <div class="reveal">
               <div class="mb-5 flex items-center justify-between gap-4">
                 <h3 class="text-2xl font-black">Opiniones publicadas</h3>
-                <button id="clearComments" type="button" class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-red-400/50 hover:text-red-300">
-                  Eliminar todo
-                </button>
               </div>
               <div id="commentsList" class="space-y-4"></div>
             </div>
@@ -439,9 +436,6 @@ const technologies = [
                     <span class="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-3 py-1 text-sm font-black text-yellow-200">
                       ${Number(comment.rating).toFixed(1)} / 5
                     </span>
-                    <button type="button" class="delete-comment" data-id="${escapeHTML(comment.id ?? '')}" data-index="${index}">
-                      Eliminar
-                    </button>
                   </div>
                 </div>
 
